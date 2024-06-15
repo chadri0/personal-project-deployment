@@ -4,9 +4,9 @@ const path = require("path");
 const {startTimer, stopTimer, resetTimer, getState} = require("../controllers/timerController");
 
 // default timer state route
-router.get("/default", async (request, response, next) => {
-    response.json(getState());
-});
+// router.get("/default", async (request, response, next) => {
+//     response.json(getState());
+// });
 // router.get("/<route>", <variable name>); //doesn't work for this
 
 // timer start route

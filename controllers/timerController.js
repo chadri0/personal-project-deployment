@@ -1,4 +1,4 @@
-const { request } = require("express");
+// const { request } = require("express");
 const timerLogic = require("../public/script/timerLogic");
 
 const startTimer = async (request, response, next) => {
@@ -54,6 +54,6 @@ const tick = () => {
     }
 };
 
-const getState = () => state;
+// const getState = () => state;
 
-module.exports = {startTimer, stopTimer, resetTimer, getState};
+module.exports = {startTimer, stopTimer, resetTimer};

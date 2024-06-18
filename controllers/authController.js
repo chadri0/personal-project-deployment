@@ -5,7 +5,7 @@ const User = require("../models/userModel");
 
 // signupRequest
 const signupRequest = async (request, response, next) => {
-    const { firstName, lastName, username, password } = request.body;
+    const { firstName, lastName, email, password } = request.body;
 
     bcrypt.hash(password, 10, async (err, hashedPassword) => {
         if (err) {
@@ -15,7 +15,7 @@ const signupRequest = async (request, response, next) => {
         const newUser = new User({
             firstName,
             lastName,
-            username,
+            email,
             password: hashedPassword
         });
         try {
@@ -38,7 +38,7 @@ const signupRequest = async (request, response, next) => {
         } catch (err) {
             if (err.code === 11000 && err.keyPattern.email) {
                 response.status(400).json({
-                    error: {message: "Username already exists."},
+                    error: {message: "Email is already registered to an account. Please login."},
                         statusCode: 400,
                 });
             } else {
@@ -54,7 +54,7 @@ const signupRequest = async (request, response, next) => {
 // loginLocalFailed
 const loginLocalFailed = (request, response, next) => {
     response.status(401).json({
-        error: {message: "Username or password is incorrect."},
+        error: {message: "Email or password is incorrect."},
         statusCode: 401,
     });
 };

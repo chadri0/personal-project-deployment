@@ -47,7 +47,7 @@ app.get("/", (request, response, next) => {
 
 // use routers
 app.use(adminRoutes); 
-app.use("/", authRoutes);
+app.use("/admin", authRoutes);
 app.use("/timer", timerRoutes);
 
 // server

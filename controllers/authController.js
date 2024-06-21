@@ -7,7 +7,11 @@ const User = require("../models/userModel");
 const signupRequest = async (request, response, next) => {
     const { firstName, lastName, email, password } = request.body;
 
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
     bcrypt.hash(password, 10, async (err, hashedPassword) => {
+        console.log(firstName, lastName, email, password);
         if (err) {
             return next(err);
         }

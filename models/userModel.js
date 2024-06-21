@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
       unique: true,
   },
   password: {
-      type: Buffer,
+      type: String,
   },
   salt: {
       type: Buffer,
